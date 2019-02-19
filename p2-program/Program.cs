@@ -8,9 +8,9 @@ namespace p2_program
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.Write("Hello!");
+            Console.Write("Hello there!");
         }
     }
 }
