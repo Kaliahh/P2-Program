@@ -1,4 +1,5 @@
 ﻿using System;
+using p2_program;
 using Xunit;
 
 namespace xUnitTest.test
@@ -12,9 +13,11 @@ namespace xUnitTest.test
         }
 
         [Fact]
-        public void TestFalse()
+        public void TestHans()
         {
-            Assert.False(false);
+            Hans hans = new Hans();
+            
+            Assert.True(hans.Noget());
         }
     }
 }
