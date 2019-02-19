@@ -1,5 +1,5 @@
 ﻿using System;
-using p2_program;
+using Project;
 using Xunit;
 
 namespace xUnitTest.test
