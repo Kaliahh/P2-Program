@@ -10,6 +10,7 @@ namespace p2_program
     {
         static void Main(string[] args)
         {
+            Console.Write("Hello!");
         }
     }
 }
