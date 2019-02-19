@@ -10,7 +10,8 @@ namespace p2_program
     {
         static void Main()
         {
-            Console.Write("Hello there!");
+            Console.WriteLine("Hello there!");
+            Console.WriteLine("Hi back");
         }
     }
 }
