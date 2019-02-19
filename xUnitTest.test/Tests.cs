@@ -11,13 +11,5 @@ namespace xUnitTest.test
         {
             Assert.True(true);
         }
-
-        [Fact]
-        public void TestHans()
-        {
-            Hans hans = new Hans();
-            
-            Assert.True(hans.Noget());
-        }
     }
 }
