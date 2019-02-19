@@ -14,4 +14,12 @@ namespace p2_program
             Console.WriteLine("Hi back");
         }
     }
+
+    public class Noget
+    {
+        public bool Noget1()
+        {
+            return true;
+        }
+    }
 }

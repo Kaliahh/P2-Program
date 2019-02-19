@@ -6,9 +6,15 @@ namespace xUnitTest.test
     public class Tests
     {
         [Fact]
-        public void Test1()
+        public void TestTrue()
         {
             Assert.True(true);
+        }
+
+        [Fact]
+        public void TestFalse()
+        {
+            Assert.False(false);
         }
     }
 }
