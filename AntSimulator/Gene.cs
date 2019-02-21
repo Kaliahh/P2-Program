@@ -11,12 +11,14 @@ namespace AntSimulator
         public int type;
         public Gene left;
         public Gene right;
+        public Gene previous;
 
         public Gene(int type)
         {
             this.type = type;
             left = null;
             right = null;
+            previous = null;
         }
     }
 }

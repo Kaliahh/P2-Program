@@ -12,6 +12,7 @@ namespace AntSimulator
     public class Ant
     {
         public Chromosome chromosome = new Chromosome();
+        public Gene current = null;
 
         public int[] coords = { 0, 0 };
         public int facing = (int)Facings.N; 
@@ -54,64 +55,80 @@ namespace AntSimulator
             return isFood;
         }
 
-        public void Decode() // Afkoder træet, ved at parre værdierne i hver node med en funktion
+        public Gene Decode(Gene current) // Afkoder kromosomet, ved at parre værdierne i hver node med en funktion
         {
-            Gene current = chromosome.root;
-
-            while (current != null)
+            // Checker om det er første gang Decode er i gang med dette gen
+            if (current == null)
             {
-                if (current.type == 0) // Check om der er mad foran myren
-                {
-                    bool choice = FoodAhead();
+                current = this.chromosome.root;
+            }
 
-                    if (choice)
-                    {
-                        current = current.left;
-                    }
-                    else
-                    {
-                        current = current.right;
-                    }
+            // Check om der er mad foran myren
+            else if (current.type == 0) 
+            {
+                bool choice = FoodAhead();
+
+                if (choice)
+                {
+                    current = current.left;
                 }
 
-                else if (current.type == 1) // Bevæg myren
+                else
                 {
-                    switch (facing)
-                    {
-                        case (int)Facings.N: // Gå mod nord
-                            coords[(int)Coords.Y] += 1;
-                            break;
-
-                        case (int)Facings.E: // Gå mod øst
-                            coords[(int)Coords.X] += 1;
-                            break;
-
-                        case (int)Facings.S: // Gå mod syd
-                            coords[(int)Coords.Y] -= 1;
-                            break;
-
-                        case (int)Facings.W: // Gå mod vest
-                            coords[(int)Coords.X] -= 1;
-                            break;
-                    }
-
-                    current = null;
-                }
-
-                else if (current.type == 2) // Drej mod højre (facing ++ mod 4)
-                {
-                    facing = (facing + 1) % 4;
-                    current = null;
-                }
-
-                else if (current.type == 3) // Drej mod venstre (facing -- mod 4)
-                {
-                    facing = (facing - 1) % 4;
-                    current = null;
+                    current = current.right;
                 }
             }
 
-            return;
+            // Bevæg myren
+            else if (current.type == 1) 
+            {
+                switch (facing)
+                {
+                    case (int)Facings.N: // Gå mod nord
+                        coords[(int)Coords.Y] += 1;
+                        break;
+
+                    case (int)Facings.E: // Gå mod øst
+                        coords[(int)Coords.X] += 1;
+                        break;
+
+                    case (int)Facings.S: // Gå mod syd
+                        coords[(int)Coords.Y] -= 1;
+                        break;
+
+                    case (int)Facings.W: // Gå mod vest
+                        coords[(int)Coords.X] -= 1;
+                        break;
+                }
+            }
+
+            // Drej mod højre (facing ++ mod 4)
+            else if (current.type == 2) 
+            {
+                facing = (facing + 1) % 4;
+            }
+
+            // Drej mod venstre (facing -- mod 4)
+            else if (current.type == 3) 
+            {
+                facing = (facing - 1) % 4;
+            }
+
+            // Split i 2 grene
+            else if (current.type == 4) 
+            {
+                Decode(current.left);
+                Decode(current.right);
+            }
+
+            // Sætter current tilbage til roden, hvis det forrige gen ikke var en splitter
+            if (current.previous.type != 4) 
+            {
+                current = this.chromosome.root;
+            }
+
+            // Returnerer den nye current
+            return current;
         }
     }   
 }

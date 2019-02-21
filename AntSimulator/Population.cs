@@ -17,28 +17,37 @@ namespace AntSimulator
             ants = new Ant[size];
         }
 
-        public void Populate()
+        public void Populate() // Initialiserer befolkningen, opbygger træerne
         {
-            // Initialiserer befolkningen, opbygger træerne
+            foreach (Ant ant in ants)
+            {
+                ant.chromosome.Initialize();
+            }
         }
 
-        public void Evaluate()
+        public void Evaluate() // Evaluerer befolkningen, og sætter individernes fitness værdi
         {
-            // Evaluerer befolkningen, og sætter individernes fitness værdi
+            for (int step = 0; step < 300; step++)
+            {
+                foreach (Ant ant in ants)
+                {
+                    ant.current = ant.Decode(ant.current);
+                }
+            }
         }
 
-        public void Select()
+        public void Select() // Vælger de myrer der skal have lov til at reproducere
         {
-            // Vælger de myrer der skal have lov til at reproducere
+            
         }
-        public void Crossover()
+        public void Crossover() // Bytter rundt på nodes på udvalgte dele af befolkningen
         {
-            // Bytter rundt på nodes på udvalgte dele af befolkningen
+            
         }
 
-        public void Mutate()
+        public void Mutate() // Muterer nodes, en hvis procentdel af gangene i stedet for crossover
         {
-            // Muterer nodes, en hvis procentdel af gangene i stedet for crossover
+            
         }
     }
 }
