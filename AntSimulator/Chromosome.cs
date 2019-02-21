@@ -8,11 +8,11 @@ namespace AntSimulator
 {
     public class Chromosome
     {
-        Gene root;
+        public Gene root;
 
         public Chromosome()
         {
-            root = null;
+            root = new Gene(0);
         }
 
         public Chromosome(int initial)
@@ -22,20 +22,18 @@ namespace AntSimulator
         
         public void AddGene(int type) // Tilføjer et gen til kromosomet
         {
+            Gene newGene = new Gene(type);
+
             // Hvis kromosomet er tomt
             if (root == null) 
             {
                 // Sæt det tilføjede gen som roden
-                Gene newGene = new Gene(type);
                 root = newGene;
                 return;
             }
         }
 
-        public void Decode() // Afkoder træet, ved at parre værdierne i hver node med en funktion
-        {
-            
-        }
+        
 
         public void Print() // Printer træet ud så man kan læse det
         {

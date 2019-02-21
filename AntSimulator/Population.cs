@@ -9,13 +9,15 @@ namespace AntSimulator
     public class Population
     {
         int size;
+        Ant[] ants;
 
         public Population(int size)
         {
             this.size = size;
+            ants = new Ant[size];
         }
 
-        public void Initialize()
+        public void Populate()
         {
             // Initialiserer befolkningen, opbygger træerne
         }
