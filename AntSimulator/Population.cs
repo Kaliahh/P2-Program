@@ -9,7 +9,9 @@ namespace AntSimulator
     public class Population
     {
         int size;
+        double max_fitness = 0;
         Ant[] ants;
+        Ant best_ant;
 
         public Population(int size)
         {
@@ -27,11 +29,19 @@ namespace AntSimulator
 
         public void Evaluate() // Evaluerer befolkningen, og sætter individernes fitness værdi
         {
-            for (int step = 0; step < 300; step++)
+            for (int step = 0; step < 300; step++) // Simuleringen varer 300 time steps
             {
                 foreach (Ant ant in ants)
                 {
                     ant.current = ant.Decode(ant.current);
+                }
+            }
+
+            foreach (Ant ant in ants)
+            {
+                if (ant.chromosome.fitness >= this.max_fitness) // Gemmer den bedste myrer
+                {
+                    best_ant = ant;
                 }
             }
         }
@@ -40,6 +50,7 @@ namespace AntSimulator
         {
             
         }
+
         public void Crossover() // Bytter rundt på nodes på udvalgte dele af befolkningen
         {
             

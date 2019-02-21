@@ -16,7 +16,6 @@ namespace AntSimulator
 
         public int[] coords = { 0, 0 };
         public int facing = (int)Facings.N; 
-        public double fitness;
 
         // TODO: Mangler rent faktisk at checke om der er mad
         public bool FoodAhead() // Checker om myren kan se mad foran den
