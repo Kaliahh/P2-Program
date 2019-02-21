@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Ant.cs" />
     <Compile Include="Chromosome.cs" />
+    <Compile Include="Food.cs" />
     <Compile Include="Gene.cs" />
+    <Compile Include="Grid.cs" />
     <Compile Include="Population.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -17,6 +17,11 @@ namespace AntSimulator
         {
             this.size = size;
             ants = new Ant[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                ants[i] = new Ant();
+            }
         }
 
         public void Populate() // Initialiserer befolkningen, opbygger træerne
@@ -24,6 +29,7 @@ namespace AntSimulator
             foreach (Ant ant in ants)
             {
                 ant.chromosome.Initialize();
+                ant.chromosome.Print();
             }
         }
 

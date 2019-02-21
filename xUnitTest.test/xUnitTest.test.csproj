@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntTester.cs" />
     <Compile Include="Tests.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>

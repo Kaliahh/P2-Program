@@ -8,8 +8,10 @@ namespace AntSimulator
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            int[][] grid = MakeGrid();
+
             Population population = new Population(100);
 
             population.Populate();
@@ -21,6 +23,25 @@ namespace AntSimulator
                 population.Crossover();
                 population.Mutate();
             }
+
+            Console.ReadLine();
+        }
+
+        public static int[][] MakeGrid()
+        {
+            Console.Write("Input bredden af koordinatsættet: ");
+            int width = int.Parse(Console.ReadLine());
+            Console.Write("Input højden af koordinatsættet: ");
+            int height = int.Parse(Console.ReadLine());
+
+            int[][] grid = new int[width][];
+
+            for (int i = 0; i < width; i++)
+            {
+                grid[i] = new int[height];
+            }
+
+            return grid;
         }
 
         public static int RandomNumber(int min, int max)

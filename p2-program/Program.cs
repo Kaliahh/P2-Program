@@ -12,6 +12,8 @@ namespace Project
         {
             Console.WriteLine("Hello there!");
             Console.WriteLine("Hi back");
+
+            Console.ReadLine();
         }
     }
 }

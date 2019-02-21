@@ -121,7 +121,7 @@ namespace AntSimulator
             }
 
             // Sætter current tilbage til roden, hvis det forrige gen ikke var en splitter
-            if (current.previous.type != 4) 
+            if (current.previous != null && current.previous.type != 4) 
             {
                 current = this.chromosome.root;
             }
